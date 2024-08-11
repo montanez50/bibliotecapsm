@@ -167,7 +167,7 @@
            @endhasanyrole
            @hasrole('Administrador')
            <li>
-              <a href="/avanzadas"
+              <a href="/avanzadas" @if($routeName == 'avanzadas') style="background-color: #E34724" @endif
                  ><i class="zmdi zmdi-wrench zmdi-hc-fw"></i>&nbsp;&nbsp;
               Configuraciones avanzadas</a
                  >

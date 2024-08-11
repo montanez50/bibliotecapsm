@@ -239,7 +239,7 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['middleware', 'can:backups'], function(){
         //crear respaldos de la base de datos
-        Route::get('/avanzadas', [BackupController::class, 'show']);
+        Route::get('/avanzadas', [BackupController::class, 'show'])->name('avanzadas');
         Route::get('/backup/create', [BackupController::class, 'create']);
         Route::get('/backup/restore/{backupPath}', [BackupController::class, 'restore']);
         Route::get('/backup/clean', [BackupController::class, 'clean']);
