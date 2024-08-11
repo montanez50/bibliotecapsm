@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\DbDumper\Databases\MySql;
-use Artisan;
+use Illuminate\Support\Facades\Artisan;
 
 class BackupController extends Controller
 {
