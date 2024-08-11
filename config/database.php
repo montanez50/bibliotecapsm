@@ -58,11 +58,11 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
-            'dump' => [
-            'dump_binary_path' => 'C:\\xampp\\mysql\\bin', // Ruta completa a mysqldump
-            'use_single_transaction',
-            'timeout' => 60 * 5, // 5 minutos
-            ],
+            // 'dump' => [
+            //     'dump_binary_path' => 'C:\\xampp\\mysql\\bin', // Ruta completa a mysqldump
+            //     'use_single_transaction',
+            //     'timeout' => 60 * 5, // 5 minutos
+            // ],
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
