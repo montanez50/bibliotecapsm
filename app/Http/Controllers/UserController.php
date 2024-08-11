@@ -140,7 +140,7 @@ class UserController extends Controller
     }
 
     public function destroy(User $usuario){
-        if ($user->hasRole('Administrador')) {
+        if ($usuario->hasRole('Administrador')) {
             return redirect()->route('user.index')->with('error', 'No puedes eliminar un Administrador.');
         }
         $usuario->delete() ;
