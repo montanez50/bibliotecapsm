@@ -10,7 +10,7 @@ use App\Models\Publicacion;
 use Illuminate\Http\Request;
 use App\Models\Visualizacion;
 use App\Models\TrabajoDeGrado;
-use Barryvdh\DomPDF\Facade\PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\ProyectoComunitario;
 
 class ReporteController extends Controller
