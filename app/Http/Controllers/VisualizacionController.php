@@ -48,7 +48,13 @@ class VisualizacionController extends Controller
     $finMes = Carbon::now()->endOfMonth();
 
     // Obtener las visualizaciones del mes en curso
-    $visualizaciones = Visualizacion::whereBetween('created_at', [$inicioMes, $finMes])->get();
+    $visualizaciones = Visualizacion::whereBetween('created_at', [$inicioMes, $finMes])
+      ->whereHas('users', function ($query) {
+        $query->whereDoesntHave('roles', function ($q) {
+            $q->where('name', 'Administrador');
+        });
+      })
+      ->get();
 
     // Obtener el total de visualizaciones del mes en curso
     $totalVisualizaciones = $visualizaciones->count();

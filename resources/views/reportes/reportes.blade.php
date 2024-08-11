@@ -275,6 +275,7 @@
                                             <option value="2">Trabajos de Grado</option>
                                             <option value="3">Proyectos Comunitarios</option>
                                             <option value="4">Videos</option>
+                                            <option value="5">Guías Académicas</option>
                                         
                                     </select>
                                 </div>

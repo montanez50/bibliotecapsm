@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -52,9 +53,9 @@ class User extends Authenticatable
         return $this->hasMany(Publicacion::class);
     }
 
-    public function visualizaciones()
+    public function visualizaciones(): HasMany
     {
-        return $this->belongsToMany(Visualizacion::class);
+        return $this->hasMany(Visualizacion::class);
     }
 
     // public function roles()

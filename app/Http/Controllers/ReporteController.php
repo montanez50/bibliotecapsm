@@ -10,6 +10,7 @@ use App\Models\Publicacion;
 use Illuminate\Http\Request;
 use App\Models\Visualizacion;
 use App\Models\TrabajoDeGrado;
+use App\Models\GuiaAcademica;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\ProyectoComunitario;
 
@@ -178,6 +179,12 @@ class ReporteController extends Controller
                 $publicacionMap = $publicacion->map(function ($data) {
                     return "<option value='{$data->publicacion_id}'>{$data->publicaciones->titulo}</option>";
                   })->toArray();
+                break;
+            case 5:
+                $publicacion = GuiaAcademica::with('publicaciones')->get();
+                $publicacionMap = $publicacion->map(function ($data) {
+                    return "<option value='{$data->publicacion_id}'>{$data->publicaciones->titulo}</option>";
+                    })->toArray();
                 break;
         }
 
