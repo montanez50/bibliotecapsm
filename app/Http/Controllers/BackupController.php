@@ -29,18 +29,18 @@ class BackupController extends Controller
 
     public function restore()
     {
-        try {
+        // try {
             $connection = env('DB_CONNECTION');
-            Artisan::call("backup:restore --disk=local --backup=latest --connection=$connection --no-interaction");
+            Artisan::call("backup:restore --disk=local --backup=latest --connection=mysql --no-interaction");
 
             return redirect()->back()->with(['message' => 'Base de datos restaurada con éxito.']);
-        } catch (Exception $e) {
+        // } catch (Exception $e) {
             // Registrar el error en el log de Laravel
             // Log::error('Database restore failed: ' . $e->getMessage());
 
             // Retornar una respuesta JSON indicando que ocurrió un error
-            return redirect()->back()->with(['error' => 'Error al restaurar la base de datos.', 'details' => $e->getMessage()]);
-        }
+        //     return redirect()->back()->with(['error' => 'Error al restaurar la base de datos.', 'details' => $e->getMessage()]);
+        // }
     }
 
     public function restore2($backupPath)
