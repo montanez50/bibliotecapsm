@@ -30,7 +30,8 @@ class BackupController extends Controller
     public function restore()
     {
         try {
-            Artisan::call('backup:restore --disk=local --backup=latest --connection=mysql --no-interaction');
+            $connection = env('DB_CONNECTION');
+            Artisan::call("backup:restore --disk=local --backup=latest --connection=$connection --no-interaction");
 
             return redirect()->back()->with(['message' => 'Base de datos restaurada con éxito.']);
         } catch (Exception $e) {
