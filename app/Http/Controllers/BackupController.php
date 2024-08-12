@@ -35,7 +35,7 @@ class BackupController extends Controller
             return redirect()->back()->with(['message' => 'Base de datos restaurada con éxito.']);
         } catch (Exception $e) {
             // Registrar el error en el log de Laravel
-            Log::error('Database restore failed: ' . $e->getMessage());
+            // Log::error('Database restore failed: ' . $e->getMessage());
 
             // Retornar una respuesta JSON indicando que ocurrió un error
             return redirect()->back()->with(['error' => 'Error al restaurar la base de datos.', 'details' => $e->getMessage()]);
