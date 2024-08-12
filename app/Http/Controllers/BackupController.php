@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use Spatie\DbDumper\Databases\MySql;
 use Illuminate\Support\Facades\Artisan;
@@ -26,7 +27,22 @@ class BackupController extends Controller
         return redirect()->back()->with(['message' => 'Respaldos eliminados satisfactoriamente']);
     }
 
-    public function restore($backupPath)
+    public function restore()
+    {
+        try {
+            Artisan::call('backup:restore --disk=local --backup=latest --connection=mysql --no-interaction');
+
+            return redirect()->back()->with(['message' => 'Base de datos restaurada con éxito.']);
+        } catch (Exception $e) {
+            // Registrar el error en el log de Laravel
+            Log::error('Database restore failed: ' . $e->getMessage());
+
+            // Retornar una respuesta JSON indicando que ocurrió un error
+            return redirect()->back()->with(['error' => 'Error al restaurar la base de datos.', 'details' => $e->getMessage()]);
+        }
+    }
+
+    public function restore2($backupPath)
     {
         try {
             // Verificar si el archivo de respaldo existe
